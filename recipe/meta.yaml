@@ -1,5 +1,4 @@
 {% set version = '0.70.1' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,30 +9,31 @@ package:
 source:
   fn: poweRlaw_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/poweRlaw_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/poweRlaw/poweRlaw_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/poweRlaw_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/poweRlaw/poweRlaw_{{ version }}.tar.gz
   sha256: 15b1b8dadeb550c01b9f1308cfa64720be6fbf56afb80f6a096987d6a0055913
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-vgam
-
   run:
     - r-base
     - r-vgam
 
 test:
   commands:
-    - $R -e "library('poweRlaw')"  # [not win]
+    - $R -e "library('poweRlaw')"           # [not win]
     - "\"%R%\" -e \"library('poweRlaw')\""  # [win]
 
 about:
@@ -44,6 +44,8 @@ about:
     a goodness-of-fit based approach is used to estimate the lower cut-off for the scaling
     region.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
@@ -51,3 +53,5 @@ extra:
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
