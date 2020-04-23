@@ -26,10 +26,10 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-vgam
+    - r-pracma
   run:
     - r-base
-    - r-vgam
+    - r-pracma
 
 test:
   commands:
@@ -47,9 +47,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
