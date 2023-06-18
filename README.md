@@ -1,11 +1,11 @@
-About r-powerlaw
-================
+About r-powerlaw-feedstock
+==========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-powerlaw-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/csgillespie/poweRlaw
 
 Package license: GPL-2 | GPL-3
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-powerlaw-feedstock/blob/main/LICENSE.txt)
 
 Summary: An implementation of maximum likelihood estimators for a variety of heavy tailed distributions, including both the discrete and continuous power law distributions. Additionally, a goodness-of-fit based approach is used to estimate the lower cut-off for the scaling region.
 
